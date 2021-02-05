@@ -176,9 +176,9 @@ namespace My_AIS_Cars.Controller
             {
                 ReopenConnection();
 
+                RefreshComboBox();
 
-
-                Car сar = new Car()
+                Car updateCar = new Car()
                 {
                     Id = Convert.ToInt32(form.textBoxId.Text),
                     idModel = (form.comboBoxModelsCars.SelectedItem as ModelCar).Id,
@@ -189,11 +189,12 @@ namespace My_AIS_Cars.Controller
                     Credit = form.checkBoxCredit.Checked,
                     model = form.comboBoxModelsCars.SelectedItem as ModelCar
                 };
-                db.TableCars.UpdateCar(сar);
+                
+                db.TableCars.UpdateCar(updateCar);
             }
-            catch
+            catch(Exception e)
             {
-                MessageBox.Show("Ошибка соединения, повторите запрос позднее");
+                MessageBox.Show("Ошибка соединения, повторите запрос позднее"+ e.Message);
             }
         }
 
@@ -242,9 +243,10 @@ namespace My_AIS_Cars.Controller
             new FormAdd().ShowDialog();
         }
 
-        public void OpenFormUpdate()
+        public void RefreshComboBox()
         {
-            new FormUpdateCar().ShowDialog();
+            form.comboBoxModelsCars.DataSource = null;
+            form.comboBoxModelsCars.DataSource = db.TableModels.Rows;
         }
     }
 }

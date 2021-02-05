@@ -242,6 +242,7 @@
             this.comboBoxModelsCars.Name = "comboBoxModelsCars";
             this.comboBoxModelsCars.Size = new System.Drawing.Size(192, 21);
             this.comboBoxModelsCars.TabIndex = 42;
+            this.comboBoxModelsCars.Click += new System.EventHandler(this.comboBoxModelsCars_Click);
             // 
             // FormMain
             // 

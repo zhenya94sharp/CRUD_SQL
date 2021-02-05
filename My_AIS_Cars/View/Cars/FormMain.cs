@@ -40,7 +40,8 @@ namespace My_AIS_Cars.View
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-          
+          controller.UpdateCar();
+          controller.RefreshDataGrid();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -72,6 +73,11 @@ namespace My_AIS_Cars.View
             controller.OpenFormSearch();
             controller.RefreshDataGrid();
 
+        }
+
+        private void comboBoxModelsCars_Click(object sender, EventArgs e)
+        {
+            controller.RefreshComboBox();
         }
     }
 }

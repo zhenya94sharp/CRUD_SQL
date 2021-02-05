@@ -25,11 +25,13 @@ namespace My_AIS_Cars.Model.Tables
         public TableCars(MySqlCommand mySqlCommand, TableModelsCars modelsCars)
         {
             this.mySqlCommand = mySqlCommand;
+
             cars = new List<Car>();
+
             cars = SelectCarsFromDb(modelsCars);
         }
 
-        private List<Car> SelectCarsFromDb(TableModelsCars tableModels)
+        public List<Car> SelectCarsFromDb(TableModelsCars tableModels)
         {
 
             mySqlCommand.CommandText = "CALL cars_select_all()";
@@ -85,7 +87,7 @@ namespace My_AIS_Cars.Model.Tables
             mySqlCommand.Parameters.AddWithValue("@year", car.Year);
             mySqlCommand.Parameters.AddWithValue("@balance", car.Balance);
             mySqlCommand.Parameters.AddWithValue("@price", car.Price);
-            mySqlCommand.Parameters.AddWithValue("@credit", car.Credit);*/
+            mySqlCommand.Parameters.AddWithValue("@credit", car.Credit); что ЭТО!!!!???*/
 
             int selectedRow = mySqlCommand.ExecuteNonQuery();
 
@@ -114,11 +116,13 @@ namespace My_AIS_Cars.Model.Tables
 
             if (selectedRow == 1)
             {
-                mySqlCommand.CommandText = "SELECT LAST_INSERT_ID()";
-
-                car.Id = Convert.ToInt32(mySqlCommand.ExecuteScalar());
-
-                cars.Insert(car.Id,car);
+                Car updatecCar = cars.Find(item => item.Id == car.Id);
+                updatecCar.Balance = car.Balance;
+                updatecCar.Body = car.Body;
+                updatecCar.model = car.model;
+                updatecCar.Credit = car.Credit;
+                updatecCar.Price = car.Price;
+                updatecCar.Year = car.Year;
             }
         }
 
