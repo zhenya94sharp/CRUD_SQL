@@ -51,6 +51,7 @@ namespace My_AIS_Cars.Controller
             {
                 Car car = new Car()
                 {
+                    model = formAdd.comboBoxModelsCars.SelectedItem as ModelCar,
                     idModel = (formAdd.comboBoxModelsCars.SelectedItem as ModelCar).Id,
                     Body = formAdd.textBoxBody.Text,
                     Year = formAdd.dateTimePickerDt.Value,

@@ -19,11 +19,11 @@ namespace My_AIS_Cars.View
         public FormMain()
         {
             InitializeComponent();
+            controller = new ControllerFormMain(this);
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            controller = new ControllerFormMain(this);
             controller.RefreshDataGrid();
         }
 

@@ -25,13 +25,11 @@ namespace My_AIS_Cars.Model.Tables
         public TableCars(MySqlCommand mySqlCommand, TableModelsCars modelsCars)
         {
             this.mySqlCommand = mySqlCommand;
-
             cars = new List<Car>();
-
-            SelectCarsFromDb(modelsCars);
+            cars = SelectCarsFromDb(modelsCars);
         }
 
-        private void SelectCarsFromDb(TableModelsCars tableModels)
+        private List<Car> SelectCarsFromDb(TableModelsCars tableModels)
         {
 
             mySqlCommand.CommandText = "CALL cars_select_all()";
@@ -56,6 +54,7 @@ namespace My_AIS_Cars.Model.Tables
             }
 
             reader.Close();
+            return cars;
 
         }
 
