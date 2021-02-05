@@ -85,7 +85,7 @@ namespace My_AIS_Cars.Model.Tables
             mySqlCommand.Parameters.AddWithValue("@year", car.Year);
             mySqlCommand.Parameters.AddWithValue("@balance", car.Balance);
             mySqlCommand.Parameters.AddWithValue("@price", car.Price);
-            mySqlCommand.Parameters.AddWithValue("@credit", car.Credit); что ЭТО!!!!???*/
+            mySqlCommand.Parameters.AddWithValue("@credit", car.Credit);*/
 
             int selectedRow = mySqlCommand.ExecuteNonQuery();
 
